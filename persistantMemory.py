@@ -87,6 +87,15 @@ def chat_with_persistent_agent(user_input: str):
     messages.append({"role": "assistant", "content": reply})
     save_memory(messages)
 
+keepGoing=True
+end_statements = ["end","End"]
+while keepGoing:
+    user_input = input("What would you like to say? Type end to stop talking.")
+    if user_input in end_statements:
+        keepGoing = False
+    else:
+        chat_with_persistent_agent(user_input)
+        
 # --- Test the session persistence ---
 # Try running these lines one by one, or rerun the entire script multiple times!
 #chat_with_persistent_agent("Hi, my name is Alex and I live in Michigan.")
